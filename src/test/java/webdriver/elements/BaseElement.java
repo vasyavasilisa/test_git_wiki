@@ -4,7 +4,6 @@ package webdriver.elements;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import webdriver.BaseEntity;
 import webdriver.Browser;
@@ -12,7 +11,6 @@ import webdriver.Logger;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 
 /**
  * Abstract class, describing base element.
@@ -23,7 +21,7 @@ public abstract class BaseElement extends BaseEntity {
 
     private static final String ID = "id=";
     private static final String CSS = "css=";
-    private static final int TIMEOUT_WAIT_0 = 0;
+    private static final int TIMEOUT_WAIT_0 = 10;
 
     protected String name;
     protected By locator;
@@ -66,6 +64,7 @@ public abstract class BaseElement extends BaseEntity {
             clearLoc = stringLocator.replaceFirst(ID, "");
             locator = By.id(clearLoc);
             name = nameOfElement;
+            logger.fatal("bla bla bla");
         } else if (stringLocator.contains(LINK)) {
             clearLoc = stringLocator.replaceFirst(LINK, "");
             locator = By.linkText(clearLoc);
